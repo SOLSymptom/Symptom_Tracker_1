@@ -3,7 +3,7 @@ name: Build and Deploy Microservices to Azure
 on:
   pull_request:
     branches:
-      - main  # O cámbialo si usas otra rama como 'production'
+      - main  # Cambia si usas otra rama
 
 jobs:
   build-and-deploy:
@@ -22,35 +22,37 @@ jobs:
           username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
           password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
 
-      - name: Build and push users-api
+      - name: Build and push patients-service
         run: |
-          docker build -t $REGISTRY/users-api ./users-api
-          docker push $REGISTRY/users-api
+          docker build -t $REGISTRY/patients-service ./symptom-tracker-monorepo/services/patients-service
+          docker push $REGISTRY/patients-service
 
-      - name: Build and push auth-api
+      - name: Build and push symptoms-service
         run: |
-          docker build -t $REGISTRY/auth-api ./auth-api
-          docker push $REGISTRY/auth-api
+          docker build -t $REGISTRY/symptoms-service ./symptom-tracker-monorepo/services/symptoms-service
+          docker push $REGISTRY/symptoms-service
 
-      - name: Build and push reports-api
+      - name: Build and push vue-symptom-app
         run: |
-          docker build -t $REGISTRY/reports-api ./reports-api
-          docker push $REGISTRY/reports-api
+          docker build --build-arg VITE_PATIENTS_SERVICE_URL=https://patients.example.com \
+                       --build-arg VITE_SYMPTOMS_SERVICE_URL=https://symptoms.example.com \
+                       -t $REGISTRY/vue-symptom-app ./symptom-tracker-monorepo/client/vue-symptom-app
+          docker push $REGISTRY/vue-symptom-app
 
-      - name: Deploy to Azure Web App (users-api)
+      - name: Deploy to Azure Web App (patients-service)
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME_USERS }}
-          images: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/users-api
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME_PATIENTS }}
+          images: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/patients-service
 
-      - name: Deploy to Azure Web App (auth-api)
+      - name: Deploy to Azure Web App (symptoms-service)
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME_AUTH }}
-          images: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/auth-api
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME_SYMPTOMS }}
+          images: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/symptoms-service
 
-      - name: Deploy to Azure Web App (reports-api)
+      - name: Deploy to Azure Web App (vue-symptom-app)
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME_REPORTS }}
-          images: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/reports-api
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME_FRONTEND }}
+          images: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/vue-symptom-app
