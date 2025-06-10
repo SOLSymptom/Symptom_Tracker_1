@@ -9,7 +9,7 @@ ARG VITE_PATIENTS_SERVICE_URL
 ARG VITE_SYMPTOMS_SERVICE_URL
 ENV VITE_PATIENTS_SERVICE_URL=$VITE_PATIENTS_SERVICE_URL
 ENV VITE_SYMPTOMS_SERVICE_URL=$VITE_SYMPTOMS_SERVICE_URL
-RUN npm run build
+RUN chmod +x node_modules/.bin/vite && npm run build
 
 FROM nginx:stable-alpine AS production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
