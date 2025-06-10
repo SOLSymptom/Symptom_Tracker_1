@@ -24,12 +24,12 @@ jobs:
 
       - name: Build and push patients-service
         run: |
-          docker build -t $REGISTRY/patients-service ./symptom-tracker-monorepo/services/patients-service
+          docker build -t $REGISTRY/patients-service ./services/patients-service
           docker push $REGISTRY/patients-service
 
       - name: Build and push symptoms-service
         run: |
-          docker build -t $REGISTRY/symptoms-service ./symptom-tracker-monorepo/services/symptoms-service
+          docker build -t $REGISTRY/symptoms-service ./services/symptoms-service
           docker push $REGISTRY/symptoms-service
 
       - name: Build and push vue-symptom-app
