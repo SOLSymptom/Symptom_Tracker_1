@@ -39,6 +39,12 @@ jobs:
                        -t $REGISTRY/vue-symptom-app ./client/vue-symptom-app
           docker push $REGISTRY/vue-symptom-app
 
+      # 👇 Login to Azure before deploying apps
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Deploy to Azure Web App (patients-service)
         uses: azure/webapps-deploy@v2
         with:
