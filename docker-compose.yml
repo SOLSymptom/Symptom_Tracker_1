@@ -20,7 +20,7 @@ services:
       - "3001:3001"
     environment:
       NODE_ENV: development
-      MONGO_URI: mongodb://patients-db:27017/patients_db_docker_compose
+      MONGO_URI: mongodb+srv://Sebastian:paciente17-@patients-db.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
       PORT: 3001
     depends_on:
       - patients-db
