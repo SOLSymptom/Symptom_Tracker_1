@@ -1,12 +1,10 @@
 # symptom-tracker-monorepo/services/patients-service/Dockerfile
-
 FROM node:18-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
-
-RUN npm install
+RUN npm install --omit=dev
 
 COPY . .
 
