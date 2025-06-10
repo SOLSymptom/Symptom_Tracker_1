@@ -36,7 +36,7 @@ jobs:
         run: |
           docker build --build-arg VITE_PATIENTS_SERVICE_URL=https://patients.example.com \
                        --build-arg VITE_SYMPTOMS_SERVICE_URL=https://symptoms.example.com \
-                       -t $REGISTRY/vue-symptom-app ./symptom-tracker-monorepo/client/vue-symptom-app
+                       -t $REGISTRY/vue-symptom-app ./client/vue-symptom-app
           docker push $REGISTRY/vue-symptom-app
 
       - name: Deploy to Azure Web App (patients-service)
