@@ -1,36 +1,39 @@
-# Etapa de construcción
-FROM node:18-alpine AS build-stage
+# Etapa de construcción (usa node:18-slim en vez de alpine)
+FROM node:18-slim AS build-stage
 WORKDIR /app
 
-# Configurar NPM con mirror confiable y reintentos automáticos
+# Instalar dependencias del sistema necesarias para build (opcional, pero útil)
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Configurar npm con mirror confiable y reintentos
 RUN npm config set registry https://registry.npmmirror.com \
   && npm config set fetch-retries 5 \
   && npm config set fetch-retry-mintimeout 2000 \
   && npm config set fetch-retry-maxtimeout 10000
 
-# Copiar archivos necesarios para instalar dependencias
+# Copiar dependencias
 COPY package*.json ./
 
-# Instalar dependencias sin las de desarrollo
+# Usar npm ci sin dependencias de desarrollo
 RUN npm ci --omit=dev
 
-# Copiar el resto del código fuente
+# Copiar el resto de la app
 COPY . .
 
-# Variable de entorno y argumento para Vite
+# Variables para Vite
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 
-# Asegurarse de que vite esté disponible y compilar el proyecto
-RUN chmod +x node_modules/.bin/vite && npm run build
+# Compilar la aplicación
+RUN npm run build
 
-# Etapa de producción con nginx
+# Etapa de producción
 FROM nginx:stable-alpine AS production-stage
 
-# Copiar el resultado del build al directorio público de nginx
+# Copiar los artefactos generados
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-# Copiar configuración personalizada de nginx
+# Configuración de Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
