@@ -59,15 +59,17 @@ Puedes seguir los siguientes pasos si usas plataformas como **Render**, **Railwa
 5. Desplegar y monitorear desde el panel de la nube
 
 ## 🧪 Scripts típicos (si se definen en cada módulo)
+
 ```bash
 # Instalar dependencias
 npm install
-```bash
+
 # Iniciar servidor de desarrollo
 npm run dev
-```bash
+
 # Compilar producción
 npm run build
+```
 
 ## 📁 Estructura típica del monorepo
 
@@ -79,8 +81,7 @@ symptom-tracker-monorepo/
 ├── package.json         # Dependencias generales (si aplica)
 └── README.md            # Documentación del proyecto
 
-Nota: Explora los subdirectorios apps/, services/ o packages/ para más package.json individuales si estás editando o ampliando este proyecto.
-
 ## 📄 Licencia
 
 Este proyecto está licenciado bajo MIT o la licencia definida por el autor original.
+
