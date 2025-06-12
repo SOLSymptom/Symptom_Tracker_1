@@ -38,3 +38,48 @@ Este proyecto permite registrar y hacer seguimiento de síntomas de salud. Está
    ```bash
    git clone <URL-del-repositorio>
    cd symptom-tracker-monorepo
+   
+2. **Construir e iniciar los contenedores**
+   ```bash
+   docker-compose up --build
+
+3. **Acceder a la aplicación**
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:5000 (puede variar)
+- **Base de datos:** configurada internamente (puede usarse Adminer o pgAdmin si está incluido)
+
+## ☁️ Despliegue en la nube
+
+Puedes seguir los siguientes pasos si usas plataformas como **Render**, **Railway** o **Heroku**:
+
+1. Crear cuenta y nuevo servicio desde un repositorio Git
+2. Configurar variables de entorno necesarias (como DB_URL, JWT_SECRET, etc.)
+3. Asegúrate de que el archivo docker-compose.yml esté en la raíz
+4. Elige los puertos adecuados (por ejemplo, 80 o 443)
+5. Desplegar y monitorear desde el panel de la nube
+
+## 🧪 Scripts típicos (si se definen en cada módulo)
+ ```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Compilar producción
+npm run build
+
+## 📁 Estructura típica del monorepo
+```bash
+symptom-tracker-monorepo/
+├── apps/
+│   ├── frontend/        # Interfaz del usuario
+│   └── backend/         # Lógica del servidor / API
+├── docker-compose.yml   # Orquestación de servicios
+├── package.json         # Dependencias generales (si aplica)
+└── README.md            # Documentación del proyecto
+Nota: Explora los subdirectorios apps/, services/ o packages/ para más package.json individuales si estás editando o ampliando este proyecto.
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo MIT o la licencia definida por el autor original.
