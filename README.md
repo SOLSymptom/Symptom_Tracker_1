@@ -73,6 +73,7 @@ npm run build
 
 ## 📁 Estructura típica del monorepo
 
+```bash
 symptom-tracker-monorepo/
 ├── apps/
 │   ├── frontend/        # Interfaz del usuario
@@ -80,6 +81,7 @@ symptom-tracker-monorepo/
 ├── docker-compose.yml   # Orquestación de servicios
 ├── package.json         # Dependencias generales (si aplica)
 └── README.md            # Documentación del proyecto
+```
 
 ## 📄 Licencia
 
