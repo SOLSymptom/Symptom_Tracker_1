@@ -73,25 +73,15 @@ SYMPTOM-TRACKER-MONOREPO/
 │   └── workflows/
 │       └── deploy.yml
 ├── client/
-│   └── vue-symptom-app/
-│       ├── node_modules/
-│       ├── src/
-│       ├── .env.development
-│       ├── .env.production
-│       ├── Dockerfile
-│       ├── index.html
-│       ├── nginx.conf
-│       ├── package-lock.json
-│       ├── package.json
-│       └── vite.config.js
-├── node_modules/
-│   ├── cors/
-│   ├── object-assign/
-│   └── vary/
-├── services/
-│   ├── docker-compose.yml
-│   ├── package-lock.json
-│   └── package.json
+│   └── vue-symptom-app/        
+├── node_modules/               
+├── services/                   
+│   ├── api-gateway/            
+│   ├── patients-service/       
+│   └── symptoms-service/       
+├── docker-compose.yml          
+├── package-lock.json
+├── package.json
 └── README.md
 
 
