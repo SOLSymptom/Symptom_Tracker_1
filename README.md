@@ -69,6 +69,8 @@ npm run build
 <details>
 <summary><strong>Estructura del proyecto</strong> (haz clic para expandir)</summary>
 
+<br>
+
 symptom-tracker-monorepo/
 └── symptom-tracker-monorepo/
 ├── docker-compose.yml
@@ -117,6 +119,7 @@ symptom-tracker-monorepo/
 └── ... (muchos archivos internos de Git)
 
 </details>
+
 
 
 
