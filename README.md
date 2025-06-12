@@ -59,7 +59,8 @@ Puedes seguir los siguientes pasos si usas plataformas como **Render**, **Railwa
 5. Desplegar y monitorear desde el panel de la nube
 
 ## 🧪 Scripts típicos (si se definen en cada módulo)
- ```bash
+
+```bash
 # Instalar dependencias
 npm install
 
@@ -69,8 +70,8 @@ npm run dev
 # Compilar producción
 npm run build
 
+
 ## 📁 Estructura típica del monorepo
-```bash
 symptom-tracker-monorepo/
 ├── apps/
 │   ├── frontend/        # Interfaz del usuario
