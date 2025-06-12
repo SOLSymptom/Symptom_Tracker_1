@@ -1,18 +1,22 @@
-# symptom-tracker-monorepo/client/vue-symptom-app/Dockerfile
+# Etapa de construcción
 FROM node:18-alpine AS build-stage
 WORKDIR /app
+
 COPY package*.json ./
 RUN npm install
+
 COPY . .
-# VITE_* variables can be passed as build args if needed for production
-ARG VITE_PATIENTS_SERVICE_URL
-ARG VITE_SYMPTOMS_SERVICE_URL
-ENV VITE_PATIENTS_SERVICE_URL=$VITE_PATIENTS_SERVICE_URL
-ENV VITE_SYMPTOMS_SERVICE_URL=$VITE_SYMPTOMS_SERVICE_URL
+
+# Solo necesitas un ARG y ENV ahora
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 RUN chmod +x node_modules/.bin/vite && npm run build
 
+# Etapa de producción con nginx
 FROM nginx:stable-alpine AS production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
