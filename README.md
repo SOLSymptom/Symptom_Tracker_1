@@ -78,6 +78,7 @@ symptom-tracker-monorepo/
 ├── docker-compose.yml   # Orquestación de servicios
 ├── package.json         # Dependencias generales (si aplica)
 └── README.md            # Documentación del proyecto
+
 Nota: Explora los subdirectorios apps/, services/ o packages/ para más package.json individuales si estás editando o ampliando este proyecto.
 
 ## 📄 Licencia
