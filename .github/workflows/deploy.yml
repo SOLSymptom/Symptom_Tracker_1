@@ -43,8 +43,8 @@ jobs:
       # Build and Push: Frontend
       - name: Build and push vue-symptom-app
         run: |
-          docker build --build-arg VITE_PATIENTS_SERVICE_URL=https://<your-domain>/patients \
-                       --build-arg VITE_SYMPTOMS_SERVICE_URL=https://<your-domain>/symptoms \
+          docker build --build-arg VITE_PATIENTS_SERVICE_URL=paciente-api-auc0edhjbtedb2gk.canadacentral-01.azurewebsites.net/patients \
+                       --build-arg VITE_SYMPTOMS_SERVICE_URL=sintomas-api-dgapcwd5b2e6c7dj.canadacentral-01.azurewebsites.net/symptoms \
                        -t $REGISTRY/vue-symptom-app ./client/vue-symptom-app
           docker push $REGISTRY/vue-symptom-app
 
