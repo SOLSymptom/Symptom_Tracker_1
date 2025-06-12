@@ -62,17 +62,13 @@ Puedes seguir los siguientes pasos si usas plataformas como **Render**, **Railwa
 ```bash
 # Instalar dependencias
 npm install
-
 # Iniciar servidor de desarrollo
 npm run dev
-
 # Compilar producción
 npm run build
 
----
-
 ## 📁 Estructura típica del monorepo
-bash
+
 symptom-tracker-monorepo/
 ├── apps/
 │   ├── frontend/        # Interfaz del usuario
