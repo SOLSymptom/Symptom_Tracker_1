@@ -69,6 +69,7 @@ npm run dev
 # Compilar producción
 npm run build
 
+---
 
 ## 📁 Estructura típica del monorepo
 bash
