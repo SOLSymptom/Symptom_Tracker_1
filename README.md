@@ -62,8 +62,10 @@ Puedes seguir los siguientes pasos si usas plataformas como **Render**, **Railwa
 ```bash
 # Instalar dependencias
 npm install
+```bash
 # Iniciar servidor de desarrollo
 npm run dev
+```bash
 # Compilar producción
 npm run build
 
