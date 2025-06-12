@@ -39,9 +39,9 @@ Este proyecto permite registrar y hacer seguimiento de síntomas de salud. Está
    docker-compose up --build
 
 3. **Acceder a la aplicación**
-- **Frontend:** http://localhost:3000
-- **Backend API:** http://localhost:5000 (puede variar)
-- **Base de datos:** configurada internamente (puede usarse Adminer o pgAdmin si está incluido)
+- **patients-service**: http://localhost:3000
+- **symptoms-service**: http://localhost:3002
+- **frontend Vue.js**: http://localhost:8080 
 
 ## ☁️ Despliegue en la nube
 
@@ -64,19 +64,59 @@ npm run dev
 npm run build
 ```
 
-## 📁 Estructura típica del monorepo
+## 📁 Estructura del proyecto
 
-```bash
+<details>
+<summary><strong>Estructura del proyecto</strong> (haz clic para expandir)</summary>
+
 symptom-tracker-monorepo/
-├── apps/
-│   ├── frontend/        # Interfaz del usuario (React, Next.js u otro)
-│   └── backend/         # Lógica del servidor / API (Node.js, Express, etc.)
-├── docker-compose.yml   # Orquestación de servicios (base de datos, backend, etc.)
-├── package.json         # Dependencias generales del monorepo (opcional)
-└── README.md            # Documentación del proyecto
-```
+└── symptom-tracker-monorepo/
+├── docker-compose.yml
+├── package-lock.json
+├── package.json
+├── README.md
+└── .git/
+├── COMMIT_EDITMSG
+├── config
+├── description
+├── FETCH_HEAD
+├── HEAD
+├── index
+├── ORIG_HEAD
+├── hooks/
+│ ├── applypatch-msg.sample
+│ ├── commit-msg.sample
+│ ├── fsmonitor-watchman.sample
+│ ├── post-update.sample
+│ ├── pre-applypatch.sample
+│ ├── pre-commit.sample
+│ ├── pre-merge-commit.sample
+│ ├── pre-push.sample
+│ ├── pre-rebase.sample
+│ ├── pre-receive.sample
+│ ├── prepare-commit-msg.sample
+│ ├── push-to-checkout.sample
+│ ├── sendemail-validate.sample
+│ └── update.sample
+├── info/
+│ └── exclude
+├── logs/
+│ └── refs/
+│ ├── heads/
+│ │ ├── main
+│ │ └── Test
+│ └── remotes/
+│ └── origin/
+│ ├── HEAD
+│ ├── main
+│ └── Test
+└── objects/
+├── 00/
+├── 01/
+├── 02/
+└── ... (muchos archivos internos de Git)
 
-## 📄 Licencia
+</details>
 
-Este proyecto está licenciado bajo MIT o la licencia definida por el autor original.
+
 
