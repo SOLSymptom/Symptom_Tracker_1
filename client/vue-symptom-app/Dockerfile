@@ -10,8 +10,6 @@ RUN npm config set registry https://registry.npmmirror.com \
   && npm config set fetch-retry-maxtimeout 10000
 
 COPY package*.json ./
-
-# 🔧 CORREGIDO: instalar también devDependencies
 RUN npm ci
 
 COPY . .
@@ -19,7 +17,8 @@ COPY . .
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 
-RUN npx vite build
+# ✅ Ejecutar vite desde su ruta local
+RUN node_modules/.bin/vite build
 
 # Etapa de producción
 FROM nginx:stable-alpine AS production-stage
