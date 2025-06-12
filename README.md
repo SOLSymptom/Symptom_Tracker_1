@@ -69,7 +69,7 @@ npm run dev
 
 # Compilar producción
 npm run build
-
+`bash`
 
 ## 📁 Estructura típica del monorepo
 symptom-tracker-monorepo/
