@@ -39,9 +39,10 @@ Este proyecto permite registrar y hacer seguimiento de síntomas de salud. Está
    docker-compose up --build
 
 3. **Acceder a la aplicación**
-- **patients-service**: http://localhost:3000
+- **patients-service**: http://localhost:3001
 - **symptoms-service**: http://localhost:3002
-- **frontend Vue.js**: http://localhost:8080 
+- **frontend Vue.js**: http://localhost:8080
+- **api-gateway**:  http://localhost:3000
 
 ## ☁️ Despliegue en la nube
 
